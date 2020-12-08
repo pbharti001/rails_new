@@ -1,0 +1,23 @@
+<h1>Albums#new</h1>
+
+<%= form_for(@album, :html => { :multipart => true }) do |f| %>
+    <div>
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+    </div>
+    <div>
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description %>
+    </div>
+    <div>
+        <%= f.fields_for :album_attachments do |p| %>
+            <div>
+                <%= p.label :avatar %><br>
+                <%= p.file_field :avatar, :multiple => true, name: "album_attachments[avatar][]" %>
+            </div>
+        <% end %>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<%end%>

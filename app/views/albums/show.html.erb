@@ -1,0 +1,23 @@
+<p>
+  <strong>Name:</strong>
+  <%= @album.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @album.description %>
+</p>
+<div>
+  <strong>Avtars:</strong>
+
+  <% @album_attachments.each do |album_attachment| %>
+      <td>
+        <%= image_tag album_attachment.try(:avatar) %>
+      </td>
+      <td><%= link_to 'Destroy', album_attachment_path(album_attachment),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+  <%end%>
+</div>
+
+<%= link_to 'Back', albums_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@album_attachment) do |f| %>
+  <% if @album_attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@album_attachment.errors.count, "error") %> prohibited this album_attachment from being saved:</h2>
+
+      <ul>
+      <% @album_attachment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+      <%= f.fields_for :album_attachments do |p| %>
+          <div>
+              <%= p.label :avatar %><br>
+              <%= p.file_field :avatar, :multiple => true, name: "album_attachments[avatar][]" %>
+          </div>
+      <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Add Avtar' %>
+  </div>
+<% end %>
